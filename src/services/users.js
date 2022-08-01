@@ -1,5 +1,5 @@
 
-// crear el servicio con una  clase anonima
+// crear el servicio para guardar usuarios con una  clase anonima
 const UserService = class {
     constructor(UserModel){
         this.Model =  UserModel
@@ -8,9 +8,7 @@ const UserService = class {
     async create(userData) {
         const newUser = new this.Model(userData)
 
-        console.log('-------------')
         console.log(newUser)
-        console.log('-------------')
         await newUser.save()
 
 
@@ -18,6 +16,11 @@ const UserService = class {
         
         return newUser.toObject()
 
+    }
+
+    // ? Crear servicio para encontrar algun usuario con el correo proporcionado para loggearse
+    getByEmail(email){
+        return this.Model.findOne({email})
     }
 }
 
